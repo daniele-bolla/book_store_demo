@@ -1,32 +1,59 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+  <div class="site" id="app">
+    <default-header></default-header>
+    <div class="main site__content">
+      <router-view />
     </div>
-    <router-view />
+    <default-footer class="site__sticky-footer"></default-footer>
   </div>
 </template>
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
+import DefaultFooter from "@/layout/DefaultFooter.vue";
+import DefaultHeader from "@/layout/DefaultHeader.vue";
 
+@Component({
+  components: {
+    DefaultFooter,
+    DefaultHeader
+  }
+})
+export default class App extends Vue {}
+</script>
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+@import "./assets/reset.css";
+@import "./assets/typo.scss";
+@import "./assets/layout.scss";
+@import "./assets/navs.scss";
+
+body {
+  background-color: $body-bg;
+  color: $text-color;
 }
 
-#nav {
-  padding: 30px;
+.site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+.site__content {
+  flex: 1;
+}
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+.site__sticky-footer {
+  position: sticky;
+  width: 100%;
+  bottom: 0;
+}
+
+@supports not (position: sticky) {
+  .site__sticky-footer {
+    position: fixed;
+    height: 6rem;
+  }
+  .site__content {
+    padding-bottom: 6rem;
   }
 }
 </style>

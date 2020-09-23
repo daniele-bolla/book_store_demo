@@ -1,0 +1,39 @@
+.nav {
+  display: flex;
+}
+
+.nav--center {
+  justify-content: center;
+}
+
+.nav__item {
+  padding: 0.6rem 0.8rem;
+  border-radius: 0.4rem;
+}
+
+.nav__item__link {
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav__item--head {
+  .nav__item__link, .nav__item__link:hover, .nav__item__link:visited, .nav__item__link:focus {
+    color: $text-color;
+  }
+  .nav__item__link :active{
+    color: $white;
+  }
+}
+
+.nav__item.nav__item--head:hover, .nav__item.nav__item--head-active {
+  background-color: $primary;
+  .nav__item__link, .nav__item__link:active{
+    color: $white;
+  }
+}
+
+.nav__item--footer{
+  .nav__item__link, .nav__item__link:hover, .nav__item__link:visited, .nav__item__link:focus {
+    color: $white;
+  }
+}
