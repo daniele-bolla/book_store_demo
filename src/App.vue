@@ -24,6 +24,7 @@ export default class App extends Vue {}
 @import "./assets/reset.css";
 @import "./assets/typo.scss";
 @import "./assets/layout.scss";
+@import "./assets/elements.scss";
 @import "./assets/navs.scss";
 
 body {

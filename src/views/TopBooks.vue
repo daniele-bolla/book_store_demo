@@ -139,8 +139,6 @@
   </div>
 </template>
 <style lang="scss">
-@import "../assets/elements.scss";
-
 .featured-book {
   display: flex;
   position: relative;
