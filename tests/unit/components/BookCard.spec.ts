@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { mount, createLocalVue, Wrapper } from "@vue/test-utils";
 import Vue from "vue";
 import BookCard from "@/components/BookCard.vue";
@@ -10,7 +11,11 @@ const router = new VueRouter({ routes });
 
 describe("BookCard", () => {
   let wrapper: Wrapper<Vue>;
-  const book = { slug: "test-slug" };
+  const book = {
+    slug: "test-slug",
+    synopsis:
+      "In Search of Lost Time, also translated as Remembrance of Things Past, novel in seven parts by Marcel Proust, published in French as À la recherche du temps perdu from 1913 to 1927. The novel is the story of Proust's own life, told as an allegorical search for truth.\nIn Search of Lost Time, also translated as Remembrance of Things Past, novel in seven parts by Marcel Proust, published in French as À la recherche du temps perdu from 1913 to 1927. The novel is the story of Proust's own life, told as an allegorical search for truth."
+  };
   beforeEach(() => {
     wrapper = mount(BookCard, {
       localVue,
@@ -42,5 +47,10 @@ describe("BookCard", () => {
     link.trigger("click");
     await Vue.nextTick();
     expect(router.currentRoute.path).toBe(`/books/${book.slug}`);
+  });
+  it("truncates synopsis to 200", async () => {
+    const { synopsis } = wrapper.vm as any;
+    const dots = 3;
+    expect(synopsis.length).toBe(200 + dots);
   });
 });

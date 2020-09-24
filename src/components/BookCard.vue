@@ -8,7 +8,7 @@
         </h2>
       </router-link>
       <h3 class="top-book-card__author">{{ book.author }}</h3>
-      <div class="top-book-card__synopsis">{{ book.synopsis }}</div>
+      <div class="top-book-card__synopsis">{{ synopsis }}</div>
     </div>
     <div class="top-book-card__picture">
       <router-link data-test="link" :to="link"
@@ -29,6 +29,14 @@ export default class BookCard extends Vue {
 
   get link(): object {
     return { name: "Book", params: { slug: this.book.slug } };
+  }
+
+  get synopsis(): string {
+    const { synopsis } = this.book;
+    const formattedSynopsis = synopsis.replace(/[\t\n\r]/gm, "");
+    return formattedSynopsis.length > 200
+      ? `${formattedSynopsis.substring(0, 200)}...`
+      : formattedSynopsis;
   }
 }
 </script>
