@@ -15,6 +15,11 @@ const routes: Array<RouteConfig> = [
     name: "Top books",
     component: () =>
       import(/* webpackChunkName: "top-books" */ "../views/TopBooks.vue")
+  },
+  {
+    path: "/books/:slug",
+    name: "Book",
+    component: () => import(/* webpackChunkName: "book" */ "../views/Book.vue")
   }
 ];
 

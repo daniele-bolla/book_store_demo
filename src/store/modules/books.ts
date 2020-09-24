@@ -3,7 +3,7 @@ import { VuexModule, Module, Mutation, Action } from "vuex-module-decorators";
 import { BookInterface } from "@/interfaces/BookInterface";
 import BookService from "@/services/BookService";
 
-@Module({ namespaced: true, name: "books" })
+@Module({ namespaced: true })
 class Books extends VuexModule {
   public all: BookInterface[] = [];
 
