@@ -24,9 +24,18 @@ describe("BookCard", () => {
     const { link } = wrapper.vm as any;
     expect(link.params.slug).toBe(book.slug);
   });
-  it("pushes on book view", () => {
-    const links = wrapper.findAll("[data-test=link]");
-    expect(links.length).toBe(2);
+  it("has two links", () => {
+    const { length, wrappers } = wrapper.findAll("[data-test=link]");
+
+    const isWrappingImage = wrappers.filter(link =>
+      link.find(".top-book-card__cover").exists()
+    );
+    const isWrappingTitle = wrappers.filter(link =>
+      link.find(".top-book-card__title").exists()
+    );
+    expect(isWrappingImage.length).toBe(1);
+    expect(isWrappingTitle.length).toBe(1);
+    expect(length).toBe(2);
   });
   it("pushes on book view", async () => {
     const link = wrapper.get("[data-test=link]");

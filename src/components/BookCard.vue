@@ -1,10 +1,12 @@
 <template>
   <div class="top-books-list__item top-book-card">
     <div class="top-book-card__description">
-      <h2 class="top-book-card__title">
-        <router-link data-test="link" :to="link">{{ book.title }}</router-link>
-        <small class="top-book-card__rating">{{ book.rating }}</small>
-      </h2>
+      <router-link data-test="link" :to="link">
+        <h2 class="top-book-card__title">
+          {{ book.title }}
+          <small class="top-book-card__rating">{{ book.rating }}</small>
+        </h2>
+      </router-link>
       <h3 class="top-book-card__author">{{ book.author }}</h3>
       <div class="top-book-card__synopsis">{{ book.synopsis }}</div>
     </div>
