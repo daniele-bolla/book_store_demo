@@ -13,9 +13,7 @@ import BaseInput from "@/components/BaseInput.vue";
     BaseInput
   }
 })
-export default class SearchBook extends Vue {
-  get search
-}
+export default class SearchBook extends Vue {}
 </script>
 
 <style scoped></style>
