@@ -19,5 +19,16 @@ class Books extends VuexModule {
   public async getAll() {
     return await BookService.getAll();
   }
+
+  get queryBooks() {
+    return (searchText: string) => {
+      return searchText
+        ? this.all.filter(
+            ({ title, synopsis }) =>
+              title.includes(searchText) || synopsis.includes(searchText)
+          )
+        : this.all;
+    };
+  }
 }
 export default Books;
