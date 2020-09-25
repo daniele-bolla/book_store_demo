@@ -2,8 +2,9 @@
   <div class="home container page">
     <div class="top-books__title">Top Books Of All Time</div>
     <base-input
+      class="top-books__search"
       name="search"
-      label="Serach for a book"
+      placeholder="Search for a book"
       type="search"
       v-model="searchText"
     ></base-input>
@@ -25,7 +26,13 @@
           >
           </a>
         </nav>
-        <book-card :book="book" v-for="book in currentBooks" :key="book.slug">
+        <book-card
+          class="top-books-list__item"
+          :book="book"
+          :index="index + 1"
+          v-for="(book, index) in currentBooks"
+          :key="book.slug"
+        >
         </book-card>
         <nav class="pagination">
           <a
@@ -83,10 +90,48 @@ export default class Home extends Vue {
 </script>
 
 <style lang="scss">
-.top-books-list__item:nth-child(even) {
+.top-books__title {
+  font-size: 2rem;
+  color: $primary;
+  font-weight: $bold;
+  text-align: center;
+  padding: 1rem 0 2rem;
+}
+.top-books__search {
+  margin-bottom: 2rem;
+}
+.top-books-list__item {
+  margin-left: -1.6rem;
+  margin-right: -1.6rem;
+  padding: 1.6rem;
+}
+
+.top-books-list__item:nth-child(odd) {
   background: $card-bg;
 }
-.top-book-card {
+
+.pagination {
   display: flex;
+  justify-content: center;
+  padding: 0.6rem 0;
+}
+
+.pagination__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 0 0.4rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.3rem;
+  border: 2px solid $primary;
+  color: $primary;
+  font-weight: $bold;
+}
+
+.pagination__link.active {
+  background: $primary;
+  color: $white;
 }
 </style>

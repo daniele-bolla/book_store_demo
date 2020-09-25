@@ -21,6 +21,7 @@
         :value="value"
         :id="name"
         :name="name"
+        :placeholder="placeholder"
         :aria-described="`describe-${name}`"
       />
       <div v-if="postAddon" class="input-group__append">
@@ -38,6 +39,7 @@ export default class BaseInput extends Vue {
   @Prop({ required: true }) readonly value!: string;
   @Prop({ default: "text" }) readonly type!: string;
   @Prop({ default: "" }) readonly label!: string;
+  @Prop({ default: "" }) readonly placeholder!: string;
   @Prop({ required: true }) readonly name!: string;
 
   get preAddon() {

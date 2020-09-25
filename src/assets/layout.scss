@@ -1,4 +1,4 @@
-.grid, .grid-x3 {
+.grid-x3 {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
@@ -26,19 +26,9 @@
   }
 }
 
-@media (max-width: 960px) {
-  .grid {
-    flex-direction: column;
-  }
-}
-
 .container {
   width: 80vw;
   max-width: 1200px;
   margin: 0 auto;
   padding: 1.8rem 1.6rem 1.6rem;
-}
-
-.ml-auto{
-  margin-left: auto;
 }

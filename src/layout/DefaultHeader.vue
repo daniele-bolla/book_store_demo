@@ -47,7 +47,7 @@ export default class DefaultHeader extends Vue {}
   margin-left: auto;
 }
 
-@media (max-width: 960px) {
+@media (max-width: 1024px) {
   .nav-head-wrap {
     justify-content: center;
   }
