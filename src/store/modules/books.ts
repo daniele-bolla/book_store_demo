@@ -25,7 +25,8 @@ class Books extends VuexModule {
       return searchText
         ? this.all.filter(
             ({ title, synopsis }) =>
-              title.includes(searchText) || synopsis.includes(searchText)
+              title.match(new RegExp(searchText, "i")) ||
+              synopsis.match(new RegExp(searchText, "i"))
           )
         : this.all;
     };

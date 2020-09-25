@@ -1,8 +1,14 @@
 <template>
   <div class="home container page">
-    <base-input name="search" type="search" v-model="searchText"></base-input>
-
     <div class="top-books__title">Top Books Of All Time</div>
+
+    <base-input
+      name="search"
+      label="Serach for a book"
+      type="search"
+      v-model="searchText"
+    ></base-input>
+
     <div class="top-books-list">
       <book-card :book="book" v-for="book in books" :key="book.slug">
       </book-card>

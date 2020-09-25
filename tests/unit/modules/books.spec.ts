@@ -2,9 +2,14 @@ import Vuex from "vuex";
 import { createLocalVue } from "@vue/test-utils";
 import { getModule } from "vuex-module-decorators";
 import Books from "@/store/modules/books";
+import { BookInterface } from "@/interfaces/BookInterface";
 
 jest.mock("@/services/BookService", () => ({
-  getAll: () => Promise.resolve([{}, {}])
+  getAll: () =>
+    Promise.resolve([
+      { title: "First Title", synopsis: "First text" },
+      { title: "Second Title", synopsis: "Second text" }
+    ])
 }));
 
 const Vue = createLocalVue();
@@ -22,14 +27,40 @@ const factory = () => {
 
 describe("Books", () => {
   it("has to get a store instance", done => {
-    const service = factory();
-    expect(service).toBeInstanceOf(Object);
+    const module = factory();
+    expect(module).toBeInstanceOf(Object);
     done();
   });
   it("fills all books from api", async done => {
-    const service = factory();
-    await service.getAll();
-    expect(service.all.length).toBe(2);
+    const module = factory();
+    await module.getAll();
+    done();
+  });
+  it("filters books by searching text or title by case insensitive", async done => {
+    //fetched all books
+    const module = factory();
+    await module.getAll();
+    //filters books by text or title
+    const searchAttempts = ["first", "title", "Text"];
+    const searchMapAttempts = searchAttempts.reduce(
+      (searchMap: Record<string, Array<BookInterface>>, attempt: string) => {
+        searchMap[attempt] = module.queryBooks(attempt);
+        return searchMap;
+      },
+      {}
+    );
+    expect(searchMapAttempts.first.length).toBe(1);
+    expect(searchMapAttempts.title.length).toBe(2);
+    expect(searchMapAttempts.Text.length).toBe(2);
+    done();
+  });
+  it("returns all books if search query is empty", async done => {
+    //fetched all books
+    const module = factory();
+    await module.getAll();
+    //returns all by empty search query
+    const books = module.queryBooks("");
+    expect(books.length).toBe(2);
     done();
   });
 });
