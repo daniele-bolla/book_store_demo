@@ -67,7 +67,7 @@ export default class BookCard extends Vue {
   font-size: 1.6rem;
   color: $primary;
   font-weight: $bold;
-  margin-bottom: 1rem;
+  margin: 1rem 0;
 }
 
 .book-card__rating {
@@ -113,9 +113,14 @@ export default class BookCard extends Vue {
   margin-left: 1rem;
 }
 
-@media (max-width: 960px) {
+@media (max-width: 1024px) {
   .book-card {
+    align-items: center;
     flex-direction: column-reverse;
+  }
+  .book-card__cover {
+    max-height: 80vh;
+    margin-bottom: 2rem;
   }
 }
 </style>

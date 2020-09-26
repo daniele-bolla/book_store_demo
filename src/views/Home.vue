@@ -70,21 +70,12 @@ import WithPagination from "@/components/WithPagination.ts";
 export default class Home extends Vue {
   searchText = "";
   currentPage = 1;
-  async mounted() {
-    await this.getAll();
-  }
-
-  @books.State
-  public all!: Array<object>;
-
-  @books.Action
-  public getAll!: () => void;
 
   @books.Getter
-  public queryBooks!: (searchText: string) => Array<BookInterface>;
+  public booksBySearch!: (searchText: string) => Array<BookInterface>;
 
   get books() {
-    return this.queryBooks(this.searchText);
+    return this.booksBySearch(this.searchText);
   }
 }
 </script>
@@ -97,9 +88,11 @@ export default class Home extends Vue {
   text-align: center;
   padding: 1rem 0 2rem;
 }
+
 .top-books__search {
   margin-bottom: 2rem;
 }
+
 .top-books-list__item {
   margin-left: -1.6rem;
   margin-right: -1.6rem;

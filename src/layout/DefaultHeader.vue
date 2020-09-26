@@ -34,7 +34,6 @@ export default class DefaultHeader extends Vue {}
 <style lang="scss">
 .nav-head-wrap {
   display: flex;
-  flex-flow: row wrap;
   justify-content: space-between;
 }
 
@@ -49,7 +48,8 @@ export default class DefaultHeader extends Vue {}
 
 @media (max-width: 1024px) {
   .nav-head-wrap {
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
   .top-menu {
     margin: 1.2rem 0 0.8rem;

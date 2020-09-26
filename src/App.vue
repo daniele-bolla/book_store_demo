@@ -9,6 +9,9 @@
 </template>
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import { namespace } from "vuex-class";
+const books = namespace("books");
+
 import DefaultFooter from "@/layout/DefaultFooter.vue";
 import DefaultHeader from "@/layout/DefaultHeader.vue";
 
@@ -18,7 +21,17 @@ import DefaultHeader from "@/layout/DefaultHeader.vue";
     DefaultHeader
   }
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  async mounted() {
+    await this.getAll();
+  }
+
+  @books.State
+  public all!: Array<object>;
+
+  @books.Action
+  public getAll!: () => void;
+}
 </script>
 <style lang="scss">
 @import "./assets/reset.css";

@@ -20,7 +20,7 @@ class Books extends VuexModule {
     return await BookService.getAll();
   }
 
-  get queryBooks() {
+  get booksBySearch() {
     return (searchText: string) => {
       return searchText
         ? this.all.filter(
@@ -29,6 +29,12 @@ class Books extends VuexModule {
               synopsis.match(new RegExp(searchText, "i"))
           )
         : this.all;
+    };
+  }
+
+  get bookBySlug() {
+    return (bySlug: string) => {
+      return this.all.find(({ slug }) => slug == bySlug);
     };
   }
 }

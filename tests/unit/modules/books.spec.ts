@@ -44,7 +44,7 @@ describe("Books", () => {
     const searchAttempts = ["first", "title", "Text"];
     const searchMapAttempts = searchAttempts.reduce(
       (searchMap: Record<string, Array<BookInterface>>, attempt: string) => {
-        searchMap[attempt] = module.queryBooks(attempt);
+        searchMap[attempt] = module.booksBySearch(attempt);
         return searchMap;
       },
       {}
@@ -59,7 +59,7 @@ describe("Books", () => {
     const module = factory();
     await module.getAll();
     //returns all by empty search query
-    const books = module.queryBooks("");
+    const books = module.booksBySearch("");
     expect(books.length).toBe(2);
     done();
   });
