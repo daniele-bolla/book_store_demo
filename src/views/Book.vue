@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container page book">
+    <div class="container page book-page">
       <article class="book-article">
         <header class="book-article__header">
           <div class="book-article__header__left">
@@ -64,15 +64,12 @@ export default class Book extends Vue {
 </script>
 
 <style lang="scss">
-.book-article {
-  padding: 1rem;
-}
 .book-article__header {
   display: flex;
   justify-content: space-between;
 }
 
-.book-article__header_right {
+.book-article__header__right {
   display: flex;
   align-items: center;
 }
@@ -97,7 +94,7 @@ export default class Book extends Vue {
 .book-article__cover {
   max-height: 90vh;
   display: block;
-  margin: 1.6rem;
+  margin: 1.6rem 0;
   border-radius: $radius;
   box-shadow: 0 0.2rem 0.2rem 0.1rem rgba(0, 0, 0, 0.1);
 }
@@ -121,5 +118,15 @@ export default class Book extends Vue {
   font-size: 1.4rem;
   font-weight: $bold;
   margin-bottom: 1.2rem;
+}
+
+@media (max-width: 1024px) {
+  .book-article__header {
+    flex-direction: column;
+  }
+  .book-article__header__right {
+    justify-content: flex-end;
+    margin-top: 1.2rem;
+  }
 }
 </style>

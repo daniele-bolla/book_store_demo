@@ -142,8 +142,8 @@
 .featured-book {
   display: flex;
   position: relative;
-  margin-left: -1.6rem;
-  margin-right: -1.6rem;
+  margin-left: -$padding-page-x;
+  margin-right: -$padding-page-x;
 }
 
 .featured-book__label-recommended {
@@ -157,7 +157,7 @@
   max-width: 40vw;
   margin: 0 auto;
   display: block;
-  margin: 2rem 1.6rem;
+  margin: 2rem 0;
   border-radius: $radius;
   box-shadow: 0 0.2rem 0.2rem 0.1rem rgba(0, 0, 0, 0.1);
 }

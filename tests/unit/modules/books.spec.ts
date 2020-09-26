@@ -7,8 +7,8 @@ import { BookInterface } from "@/interfaces/BookInterface";
 jest.mock("@/services/BookService", () => ({
   getAll: () =>
     Promise.resolve([
-      { title: "First Title", synopsis: "First text" },
-      { title: "Second Title", synopsis: "Second text" }
+      { title: "First Title", synopsis: "First text", slug: "first_slug" },
+      { title: "Second Title", synopsis: "Second text", slug: "second_slug" }
     ])
 }));
 
@@ -61,6 +61,16 @@ describe("Books", () => {
     //returns all by empty search query
     const books = module.booksBySearch("");
     expect(books.length).toBe(2);
+    done();
+  });
+  it("finds a book by given slug", async done => {
+    //fetched all books
+    const module = factory();
+    await module.getAll();
+
+    const slug = "first_slug";
+    const book!: BookInterface = module.bookBySlug(slug);
+    expect(book.title).toBe("First Title");
     done();
   });
 });

@@ -94,8 +94,8 @@ export default class Home extends Vue {
 }
 
 .top-books-list__item {
-  margin-left: -1.6rem;
-  margin-right: -1.6rem;
+  margin-left: -$padding-page-x;
+  margin-right: -$padding-page-x;
   padding: 1.6rem;
 }
 
