@@ -25,7 +25,7 @@
         </p>
       </div>
     </div>
-    <div class="book-comment">
+    <div class="book-comment-form">
       <textarea class="textarea" name="" id="" cols="30" rows="10"></textarea>
       <base-button text="Comment" size="full"></base-button>
     </div>
@@ -44,8 +44,14 @@ export default class BookComments extends Vue {}
 </script>
 
 <style lang="scss">
-.book-comment {
+.book-comments {
   padding: 1rem 2rem;
+}
+
+.book-comment {
+  padding: 0.6rem 1rem;
+  margin-bottom: 1.4rem;
+  background: darken($card-bg, 10%);
 }
 
 .book-comment__author {
