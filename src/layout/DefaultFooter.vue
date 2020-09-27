@@ -2,17 +2,17 @@
   <footer class="footer">
     <div class="container">
       <nav>
-        <ul class="nav nav--center">
-          <li class="nav__item nav__item--footer">
+        <ul class="nav nav--center nav--footer">
+          <li class="nav__item">
             <a class="nav__item__link" href="#">Blog</a>
           </li>
-          <li class="nav__item nav__item--footer">
+          <li class="nav__item">
             <a class="nav__item__link" href="#">About</a>
           </li>
-          <li class="nav__item nav__item--footer">
+          <li class="nav__item">
             <a class="nav__item__link" href="#">Privacy</a>
           </li>
-          <li class="nav__item nav__item--footer">
+          <li class="nav__item">
             <a class="nav__item__link" href="#">Terms</a>
           </li>
         </ul>

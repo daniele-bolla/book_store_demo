@@ -3,19 +3,25 @@
     <div class="container nav-head-wrap">
       <a class="top-logo">Logo</a>
       <nav class="top-menu">
-        <ul class="nav">
-          <li class="nav__item nav__item--head">
+        <ul class="nav nav--head">
+          <li
+            class="nav__item"
+            :class="{ 'nav__item--active': currentPage === '/' }"
+          >
             <router-link class="nav__item__link" to="/">Home</router-link>
           </li>
-          <li class="nav__item nav__item--head">
+          <li class="nav__item">
             <a class="nav__item__link" href="#">Just added</a>
           </li>
-          <li class="nav__item nav__item--head nav__item--head-active">
+          <li
+            class="nav__item"
+            :class="{ 'nav__item--active': currentPage === '/top-books' }"
+          >
             <router-link class="nav__item__link" to="/top-books"
               >Top books</router-link
             >
           </li>
-          <li class="nav__item nav__item--head">
+          <li class="nav__item">
             <a class="nav__item__link" href="#">Upcomingut</a>
           </li>
         </ul>
@@ -28,7 +34,11 @@
 import { Component, Vue } from "vue-property-decorator";
 
 @Component
-export default class DefaultHeader extends Vue {}
+export default class DefaultHeader extends Vue {
+  get currentPage() {
+    return this.$route.path;
+  }
+}
 </script>
 
 <style lang="scss">
