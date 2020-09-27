@@ -51,7 +51,3 @@ export default class BaseInput extends Vue {
   }
 }
 </script>
-
-<style lang="scss">
-@import "@/assets/input.scss";
-</style>

@@ -1,7 +1,7 @@
 <template>
-  <div class="book-card">
+  <article class="book-card">
     <div class="book-card__description">
-      <div class="book-card__description__top">
+      <header class="book-card__description__top">
         <router-link class="book-card__link" :to="link">
           <h2 class="book-card__title">
             {{ index }}. {{ book.title }}
@@ -10,18 +10,18 @@
         </router-link>
         <h3 class="book-card__author">{{ book.author }}</h3>
         <div class="book-card__synopsis">{{ synopsis }}</div>
-      </div>
-      <div class="book-card__bottom">
+      </header>
+      <footer class="book-card__bottom">
         <base-button :text="upvotedText" :disabled="book.upvoted"></base-button>
         <span class="book-card__upvotes">Upvoted {{ book.upvotes }} times</span>
-      </div>
+      </footer>
     </div>
-    <div class="book-card__picture">
+    <figure class="book-card__picture">
       <router-link class="book-card__link" :to="link"
         ><img class="book-card__cover" :src="book.cover" :alt="book.title"
       /></router-link>
-    </div>
-  </div>
+    </figure>
+  </article>
 </template>
 
 <script lang="ts">

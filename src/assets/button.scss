@@ -27,11 +27,12 @@
   text-align: center;
 }
 
-.btn--large {
+.btn--full {
   padding: 0.5rem 1rem;
   font-size: 1.25rem;
   line-height: 1.5;
-  border-radius: calc($radius * 0.8);
+  width: 100%;
+  justify-content: center;
 }
 
 .btn--primary {

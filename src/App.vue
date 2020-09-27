@@ -1,10 +1,10 @@
 <template>
   <div class="site" id="app">
     <default-header></default-header>
-    <div class="main site__content">
+    <main class="site__content">
       <router-view />
-    </div>
-    <default-footer class="site__sticky-footer"></default-footer>
+    </main>
+    <default-footer class="site__footer--sticky"></default-footer>
   </div>
 </template>
 <script lang="ts">
@@ -35,10 +35,11 @@ export default class App extends Vue {
 </script>
 <style lang="scss">
 @import "./assets/reset.css";
-@import "./assets/typo.scss";
-@import "./assets/layout.scss";
-@import "./assets/elements.scss";
-@import "./assets/navs.scss";
+@import "@/assets/typo.scss";
+@import "@/assets/layout.scss";
+@import "@/assets/elements.scss";
+@import "@/assets/navs.scss";
+@import "@/assets/form.scss";
 
 body {
   background-color: $body-bg;
@@ -55,14 +56,14 @@ body {
   flex: 1;
 }
 
-.site__sticky-footer {
+.site__footer--sticky {
   position: sticky;
   width: 100%;
   bottom: 0;
 }
 
 @supports not (position: sticky) {
-  .site__sticky-footer {
+  .site__footer--sticky {
     position: fixed;
     height: 6rem;
   }

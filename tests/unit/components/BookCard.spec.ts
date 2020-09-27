@@ -21,6 +21,7 @@ describe("BookCard", () => {
       localVue,
       router,
       propsData: {
+        index: 1,
         book
       }
     });
@@ -30,20 +31,20 @@ describe("BookCard", () => {
     expect(link.params.slug).toBe(book.slug);
   });
   it("has two links", () => {
-    const { length, wrappers } = wrapper.findAll("[data-test=link]");
+    const { length, wrappers } = wrapper.findAll(".book-card__link");
 
     const isWrappingImage = wrappers.filter(link =>
-      link.find(".top-book-card__cover").exists()
+      link.find(".book-card__cover").exists()
     );
     const isWrappingTitle = wrappers.filter(link =>
-      link.find(".top-book-card__title").exists()
+      link.find(".book-card__title").exists()
     );
     expect(isWrappingImage.length).toBe(1);
     expect(isWrappingTitle.length).toBe(1);
     expect(length).toBe(2);
   });
   it("pushes on book view", async () => {
-    const link = wrapper.get("[data-test=link]");
+    const link = wrapper.get(".book-card__link");
     link.trigger("click");
     await Vue.nextTick();
     expect(router.currentRoute.path).toBe(`/books/${book.slug}`);

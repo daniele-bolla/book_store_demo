@@ -50,3 +50,35 @@
   border-color: $primary;
   border-radius: calc($radius / 2);
 }
+
+.hr{
+  border: 0;
+  border-top: 0.2rem solid rgba(0,0,0,.1);
+  margin: 1rem 0;
+  clear: both;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding: 0.6rem 0;
+}
+
+.pagination__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 0 0.4rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.3rem;
+  border: 2px solid $primary;
+  color: $primary;
+  font-weight: $bold;
+}
+
+.pagination__link--active {
+  background: $primary;
+  color: $white;
+}

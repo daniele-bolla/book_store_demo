@@ -69,8 +69,8 @@ describe("Books", () => {
     await module.getAll();
 
     const slug = "first_slug";
-    const book!: BookInterface = module.bookBySlug(slug);
-    expect(book.title).toBe("First Title");
+    const book = module.bookBySlug(slug);
+    expect(book && book.title).toBe("First Title");
     done();
   });
 });

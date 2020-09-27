@@ -157,7 +157,7 @@
   max-width: 40vw;
   margin: 0 auto;
   display: block;
-  margin: 2rem 0;
+  margin: 2rem $padding-page-x;
   border-radius: $radius;
   box-shadow: 0 0.2rem 0.2rem 0.1rem rgba(0, 0, 0, 0.1);
 }

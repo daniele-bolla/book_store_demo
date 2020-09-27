@@ -13,7 +13,8 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 enum size {
   "small",
   "medium",
-  "large"
+  "large",
+  "full"
 }
 enum skin {
   "secondary",

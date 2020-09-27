@@ -30,6 +30,8 @@
           <div class="book-article__description">{{ book.synopsis }}</div>
         </main>
         <span class="book-article__rating">Rating: {{ book.rating }}</span>
+        <hr class="hr" />
+        <book-comments></book-comments>
       </article>
     </div>
   </div>
@@ -44,9 +46,11 @@ import { namespace } from "vuex-class";
 const books = namespace("books");
 
 import BaseButton from "@/components/BaseButton.vue";
+import BookComments from "@/components/BookComments.vue";
 @Component({
   components: {
-    BaseButton
+    BaseButton,
+    BookComments
   }
 })
 export default class Book extends Vue {
