@@ -12,7 +12,12 @@
         <div class="book-card__synopsis">{{ synopsis }}</div>
       </header>
       <footer class="book-card__bottom">
-        <base-button :text="upvotedText" :disabled="book.upvoted"></base-button>
+        <base-button
+          @click="setUpvote(book.slug)"
+          :text="upvotedText"
+          :disabled="book.upvoted"
+          class="btn-upvotes"
+        ></base-button>
         <span class="book-card__upvotes">Upvoted {{ book.upvotes }} times</span>
       </footer>
     </div>
@@ -27,6 +32,9 @@
 <script lang="ts">
 import { BookInterface } from "@/interfaces/BookInterface";
 import { Component, Prop, Vue } from "vue-property-decorator";
+import { namespace } from "vuex-class";
+const books = namespace("books");
+
 import BaseButton from "@/components/BaseButton.vue";
 @Component({
   components: {
@@ -54,6 +62,8 @@ export default class BookCard extends Vue {
   get upvotedText(): string {
     return this.book.upvoted ? "Upvoted" : "Upvote";
   }
+  @books.Action
+  public setUpvote!: (slug: string) => void;
 }
 </script>
 

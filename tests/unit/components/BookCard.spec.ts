@@ -13,6 +13,7 @@ describe("BookCard", () => {
   let wrapper: Wrapper<Vue>;
   const book = {
     slug: "test-slug",
+    upvoted: true,
     synopsis:
       "In Search of Lost Time, also translated as Remembrance of Things Past, novel in seven parts by Marcel Proust, published in French as À la recherche du temps perdu from 1913 to 1927. The novel is the story of Proust's own life, told as an allegorical search for truth.\nIn Search of Lost Time, also translated as Remembrance of Things Past, novel in seven parts by Marcel Proust, published in French as À la recherche du temps perdu from 1913 to 1927. The novel is the story of Proust's own life, told as an allegorical search for truth."
   };
@@ -53,5 +54,10 @@ describe("BookCard", () => {
     const { synopsis } = wrapper.vm as any;
     const dots = 3;
     expect(synopsis.length).toBe(200 + dots);
+  });
+  it("disables uovote button correctly", async () => {
+    const btn = wrapper.find(".btn-upvotes");
+    const { disabled } = btn.attributes();
+    expect(disabled).toBe("disabled");
   });
 });

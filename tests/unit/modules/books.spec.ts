@@ -7,8 +7,20 @@ import { BookInterface } from "@/interfaces/BookInterface";
 jest.mock("@/services/BookService", () => ({
   getAll: () =>
     Promise.resolve([
-      { title: "First Title", synopsis: "First text", slug: "first_slug" },
-      { title: "Second Title", synopsis: "Second text", slug: "second_slug" }
+      {
+        title: "First Title",
+        synopsis: "First text",
+        slug: "first_slug",
+        upvoted: false,
+        upvotes: 1
+      },
+      {
+        title: "Second Title",
+        synopsis: "Second text",
+        slug: "second_slug",
+        upvoted: true,
+        upvotes: 3
+      }
     ])
 }));
 
@@ -71,6 +83,20 @@ describe("Books", () => {
     const slug = "first_slug";
     const book = module.bookBySlug(slug);
     expect(book && book.title).toBe("First Title");
+    done();
+  });
+  it("sets upvetes", async done => {
+    //fetched all books
+    const module = factory();
+    await module.getAll();
+    //given a book
+    const slug = "first_slug";
+    const book = module.bookBySlug(slug);
+
+    await module.setUpvote(slug);
+
+    expect(book && book.upvoted).toBeTruthy();
+    expect(book && book.upvotes).toBe(2);
     done();
   });
 });
