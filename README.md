@@ -56,3 +56,8 @@ npm install
 ```
 npm start
 ```
+
+### Unit Test
+```
+npm run unit
+```
