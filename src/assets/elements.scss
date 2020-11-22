@@ -1,3 +1,5 @@
+@import "./variables.scss";
+
 .page {
   background-color: $page-bg;
   border-top-left-radius: $radius;
@@ -48,7 +50,7 @@
 .badge--primary {
   color: $primary;
   border-color: $primary;
-  border-radius: calc($radius / 2);
+  border-radius: 0.4rem;
 }
 
 .hr{
