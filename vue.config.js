@@ -4,7 +4,7 @@ module.exports = {
       sass: {
         prependData: `@import "@/assets/variables.scss";`
       }
-    },
-    publicPath: "/book_store_demo/"
-  }
+    }
+  },
+  publicPath: "/book_store_demo/"
 };
